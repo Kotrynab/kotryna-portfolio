@@ -1,182 +1,119 @@
-// ===== WORK CARDS: fly in from left/right toward center =====
-// Left column (data-dir="left") slides from the left.
-// Right column (data-dir="right") slides from the right.
-// Cards in the same row are staggered slightly so they don't arrive simultaneously.
-const cardObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    const card = entry.target;
+// ═══ HERO PARALLAX — same as template ═══
+// Content moves up and fades as the white section scrolls over the sticky hero
+const heroInner = document.querySelector('.hero-inner');
+const hero      = document.querySelector('.hero');
 
-    // Stagger: right-column card waits 120ms so left arrives first
+function heroParallax() {
+  const scrolled     = window.scrollY;
+  const heroHeight   = hero.offsetHeight;
+  const progress     = Math.min(scrolled / heroHeight, 1);
+
+  // move content up at 35% of scroll speed, fade out
+  heroInner.style.transform = `translateY(${scrolled * 0.35}px)`;
+  heroInner.style.opacity   = Math.max(1 - progress * 2, 0);
+}
+
+window.addEventListener('scroll', heroParallax, { passive: true });
+heroParallax();
+
+// ═══ WORK CARDS — slide in from sides ═══
+// Left column flies from left, right column from right — same as template
+const cardObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const card = e.target;
     const delay = card.dataset.dir === 'right' ? 120 : 0;
     setTimeout(() => card.classList.add('in-view'), delay);
-
-    cardObserver.unobserve(card);
+    cardObs.unobserve(card);
   });
-}, {
-  threshold: 0.08,   // trigger as soon as 8% of the card is visible
-  rootMargin: '0px 0px -40px 0px'  // fire a bit before card fully enters viewport
-});
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.card[data-dir]').forEach(card => {
-  cardObserver.observe(card);
-});
+document.querySelectorAll('.card[data-dir]').forEach(c => cardObs.observe(c));
 
-// ===== SERVICE CARDS: smooth scroll-driven scale animation =====
-// Uses only scale + translateY — both fully GPU-composited, zero repaint.
-// All getBoundingClientRect() calls are batched BEFORE any writes
-// to avoid layout thrashing on every scroll tick.
+// ═══ SERVICES — scroll-driven scale + compress animation ═══
+// Replicates the template's card "push back" effect as the next card slides over
+const SVC_TOP = 90;
 
-const SVC_TOP = 90; // must match sticky top in CSS
-
-function animateServiceCards() {
-  const cards = [...document.querySelectorAll('.svc-card')];
-  const vh    = window.innerHeight;
-
-  // 1. READ — batch all layout reads first
-  const tops    = cards.map(c => c.getBoundingClientRect().top);
+function animateSvc() {
+  const cards  = [...document.querySelectorAll('.svc-card')];
+  const tops   = cards.map(c => c.getBoundingClientRect().top);
   const heights = cards.map(c => c.offsetHeight);
 
-  // 2. WRITE — then update transforms
   cards.forEach((card, i) => {
-    const top    = tops[i];
-    const height = heights[i];
-    const below  = top - SVC_TOP; // positive = card is below sticky line
+    const top   = tops[i];
+    const below = top - SVC_TOP;
 
-    let scale = 1;
-    let ty    = 0;
-    let sy    = 1; // scaleY to simulate depth foreshortening (the "lean")
+    let scale = 1, ty = 0, sy = 1;
 
     if (below > 0) {
-      // ── Arriving from below ──
-      // Card scales up and rises as it approaches the sticky position
-      const t = Math.min(below / (vh * 0.5), 1);
-      scale   = 1 - t * 0.12;
-      ty      = t * 28;
-
+      // approaching from below — scale down
+      const t = Math.min(below / (window.innerHeight * 0.5), 1);
+      scale = 1 - t * 0.12;
+      ty    = t * 24;
     } else {
-      // ── Sitting at sticky position ──
-      // If the next card is covering this one, push it "further away"
+      // at sticky — compress if next card is covering it
       const nextTop = tops[i + 1];
       if (nextTop !== undefined) {
-        const covered = (SVC_TOP + height) - nextTop; // px the next card overlaps this one
+        const covered = (SVC_TOP + heights[i]) - nextTop;
         if (covered > 0) {
-          const t = Math.min(covered / height, 1);
-          scale   = 1 - t * 0.08;          // shrink as pushed back
-          sy      = 1 - t * 0.06;          // compress vertically — the "lean" illusion
-          ty      = -t * 10;               // float up slightly as it recedes
+          const t = Math.min(covered / heights[i], 1);
+          scale = 1 - t * 0.08;
+          sy    = 1 - t * 0.06;
+          ty    = -t * 10;
         }
       }
     }
-
     card.style.transform = `translateY(${ty}px) scale(${scale}) scaleY(${sy})`;
   });
 }
 
 let rafPending = false;
-function onScroll() {
+window.addEventListener('scroll', () => {
   if (!rafPending) {
     rafPending = true;
-    requestAnimationFrame(() => {
-      animateServiceCards();
-      rafPending = false;
-    });
+    requestAnimationFrame(() => { animateSvc(); rafPending = false; });
   }
-}
+}, { passive: true });
+window.addEventListener('resize', animateSvc);
+animateSvc();
 
-window.addEventListener('scroll', onScroll, { passive: true });
-window.addEventListener('resize', animateServiceCards);
-animateServiceCards();
-
-// ===== SECTION HEADING REVEAL =====
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
+// ═══ SCROLL REVEAL for process cards etc ═══
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
 }, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-document.querySelectorAll(
-  '.section-head, .about-photo, .about-text, .contact-title, .contact-sub, .contact-cta, .footer-card'
-).forEach((el, i) => {
-  el.classList.add('reveal');
-  el.style.transitionDelay = `${i * 0.05}s`;
-  revealObserver.observe(el);
-});
-
-// ===== PROJECT DATA =====
+// ═══ PROJECT DATA ═══
 const projects = {
-  beribu: {
-    name: 'Beribu', year: '2023', cat: 'Brand Identity',
-    images: ['images/beribu-cover.png','images/beribu-2.png','images/beribu-3.png'],
-    desc: ''
-  },
-  kelioniu: {
-    name: 'Kelioniu akademija', year: '2025', cat: 'Visual Identity',
-    images: ['images/kelioniu-cover.png','images/kelioniu-2.png','images/kelioniu-3.png'],
-    desc: ''
-  },
-  bite: {
-    name: 'Romainiu odontologijos klinika', year: '2024', cat: 'Brand Identity',
-    images: ['images/bite-cover.jpg','images/bite-2.jpg','images/bite-3.jpg'],
-    desc: ''
-  },
-  zoo: {
-    name: 'Lithuanian Zoo', year: '2023', cat: 'Illustration',
-    images: ['images/zoo-cover.jpg','images/zoo-2.jpg','images/zoo-3.jpg'],
-    desc: ''
-  },
-  doa: {
-    name: 'Disputes over Access', year: '2023', cat: 'Book Cover',
-    images: ['images/doa-cover.png','images/doa-2.png','images/doa-3.png'],
-    desc: 'Book cover design for a journalist practice study.'
-  },
-  'visual-identity': {
-    name: 'Kotryna Creates', year: '2025', cat: 'Visual Identity',
-    images: ['images/visual-identity-cover.jpg','images/visual-identity-2.png','images/visual-identity-3.png'],
-    desc: 'Personal logo and visual identity system.'
-  },
-  jaunimo: {
-    name: 'Jaunimo linija', year: '2022', cat: 'Book Design',
-    images: ['images/jaunimo-linija-cover.jpg','images/jaunimo-linija-2.jpg','images/jaunimo-linija-3.jpg'],
-    desc: 'Exercise book design.'
-  },
-  livoliukai: {
-    name: 'Livoliukai', year: '2022', cat: 'Brand Identity',
-    images: ['images/livoliukai-cover.jpg'],
-    desc: ''
-  },
-  typeface: {
-    name: 'Handmade Typeface', year: '2019', cat: 'Typography',
-    images: ['images/typeface-cover.jpg','images/typeface-2.jpg','images/typeface-3.jpg'],
-    desc: ''
-  },
-  muziejus:  { name: 'Lietuvos etnografijos muziejus', year: '2024', cat: 'Visual Identity', images: [], desc: 'Images coming soon.' },
-  ekosanus:  { name: 'EKOsanus', year: '2021', cat: 'Logo & Packaging', images: [], desc: "Logo and packaging for brewer's yeast. Images coming soon." },
-  orkla:     { name: 'Orkla care', year: '2024', cat: 'Design', images: [], desc: 'Images coming soon.' },
-  vom:       { name: 'VOM Baltics', year: '2022', cat: 'Design', images: [], desc: 'Images coming soon.' },
-  tshirts:   { name: 'T-shirt designs', year: '2023', cat: 'Illustration', images: [], desc: 'Images coming soon.' }
+  beribu:           { name: 'Beribu',                          year: '2023', cat: 'Brand Identity',     images: [], desc: '' },
+  kelioniu:         { name: 'Kelioniu akademija',              year: '2025', cat: 'Visual Identity',    images: [], desc: '' },
+  bite:             { name: 'Romainiu odontologijos klinika',  year: '2024', cat: 'Brand Identity',     images: [], desc: '' },
+  zoo:              { name: 'Lithuanian Zoo',                  year: '2023', cat: 'Illustration',       images: [], desc: '' },
+  doa:              { name: 'Disputes over Access',            year: '2023', cat: 'Book Cover',         images: [], desc: 'Book cover for a journalist practice study.' },
+  'visual-identity':{ name: 'Kotryna Creates',                year: '2025', cat: 'Visual Identity',    images: [], desc: 'Personal logo and visual identity system.' },
+  jaunimo:          { name: 'Jaunimo linija',                  year: '2022', cat: 'Book Design',        images: [], desc: 'Exercise book design.' },
+  livoliukai:       { name: 'Livoliukai',                      year: '2022', cat: 'Brand Identity',     images: [], desc: '' },
+  typeface:         { name: 'Handmade Typeface',               year: '2019', cat: 'Typography',         images: [], desc: '' },
+  muziejus:         { name: 'Lietuvos etnografijos muziejus',  year: '2024', cat: 'Visual Identity',    images: [], desc: 'Images coming soon.' },
+  ekosanus:         { name: 'EKOsanus',                        year: '2021', cat: 'Logo & Packaging',   images: [], desc: "Logo and packaging for brewer's yeast. Images coming soon." },
+  orkla:            { name: 'Orkla care',                      year: '2024', cat: 'Design',             images: [], desc: 'Images coming soon.' },
+  vom:              { name: 'VOM Baltics',                     year: '2022', cat: 'Design',             images: [], desc: 'Images coming soon.' },
+  tshirts:          { name: 'T-shirt designs',                 year: '2023', cat: 'Illustration',       images: [], desc: 'Images coming soon.' },
 };
 
-// ===== MODAL =====
-const modal   = document.getElementById('modal');
-const content = document.getElementById('modal-content');
-const closeBtn = document.getElementById('modal-close');
-const backdrop = document.getElementById('modal-backdrop');
+// ═══ MODAL ═══
+const modal    = document.getElementById('modal');
+const mContent = document.getElementById('modal-content');
+const mClose   = document.getElementById('modal-close');
+const mBack    = document.getElementById('modal-backdrop');
 
 function openModal(key) {
-  const p = projects[key];
-  if (!p) return;
-  content.innerHTML = `
-    <div class="modal-meta">
-      <span class="modal-cat">${p.cat}</span>
-      <span class="modal-year">${p.year}</span>
-    </div>
+  const p = projects[key]; if (!p) return;
+  mContent.innerHTML = `
+    <div class="modal-meta"><span class="modal-cat">${p.cat}</span><span class="modal-year">${p.year}</span></div>
     <h2 class="modal-title">${p.name}</h2>
     ${p.desc ? `<p class="modal-desc">${p.desc}</p>` : ''}
-    ${p.images.length ? `<div class="modal-images">${p.images.map(s => `<img src="${s}" alt="${p.name}">`).join('')}</div>` : ''}
+    ${p.images.length ? `<div class="modal-images">${p.images.map(s=>`<img src="${s}" alt="${p.name}">`).join('')}</div>` : ''}
   `;
   modal.classList.add('open');
   modal.setAttribute('aria-hidden', 'false');
@@ -189,21 +126,21 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
-document.querySelectorAll('.card').forEach(card => {
-  card.addEventListener('click', e => {
-    e.preventDefault();
-    if (card.dataset.project) openModal(card.dataset.project);
-  });
-});
-
-closeBtn.addEventListener('click', closeModal);
-backdrop.addEventListener('click', closeModal);
+document.querySelectorAll('.card').forEach(c => c.addEventListener('click', e => { e.preventDefault(); if (c.dataset.project) openModal(c.dataset.project); }));
+mClose.addEventListener('click', closeModal);
+mBack.addEventListener('click', closeModal);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-// ===== SMOOTH SCROLL =====
+// ═══ LOGO — scroll to very top ═══
+document.getElementById('nav-home').addEventListener('click', e => {
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ═══ SMOOTH SCROLL ═══
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
   });
 });

@@ -7,150 +7,97 @@
   <meta name="description" content="Freelance graphic designer with 10 years of experience — logos, branding, packaging, illustrations, book design and more.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,700;0,900;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  <!-- New Title — the exact display font used in the Lofty Lab template -->
+  <link href="https://api.fontshare.com/v2/css?f[]=new-title@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- FLOATING NAV -->
+  <!-- ═══ NAVIGATION ═══ -->
   <header class="nav-wrap">
     <nav class="nav-pill">
-      <a href="#" class="nav-logo-link">
-        <span class="nav-logo">Kotryna Creates</span>
+      <a href="#" class="nav-logo" id="nav-home">
+        <div class="nav-logo-icon"><img src="images/logo.png" alt="K"></div>
+        Kotryna Creates
       </a>
       <div class="nav-links">
-        <a href="#work"    class="nav-btn nav-btn--active">Work</a>
-        <a href="#about"   class="nav-btn">About</a>
-        <a href="#contact" class="nav-btn nav-btn--cta">Contact</a>
+        <a href="#about"    class="nav-btn nav-btn--green">About</a>
+        <a href="#services" class="nav-btn nav-btn--orange">Services</a>
+        <a href="#work"     class="nav-btn nav-btn--blue">Work</a>
+        <a href="#contact"  class="nav-btn nav-btn--purple nav-btn--active">Contact</a>
       </div>
     </nav>
   </header>
 
-  <!-- HERO — blue background, huge text -->
-  <section class="hero">
-    <div class="hero-bg"></div>
+  <!-- ═══ HERO ═══ -->
+  <section class="hero" id="top">
+    <div class="hero-cloud-bg"></div>
     <div class="hero-inner">
-      <p class="hero-eyebrow">Freelance Graphic Designer · 10 years of experience</p>
+      <img src="images/logo.png" alt="Kotryna Creates" class="hero-logo">
       <h1 class="hero-title">
-        <span>Kotryna</span>
-        <span class="hero-title--outline">Creates</span>
+        <span class="hero-line">I create</span>
+        <span class="hero-line">DESIGN THAT</span>
+        <span class="hero-line hero-line--accent">SPEAKS daily</span>
       </h1>
-      <p class="hero-sub">Logos · Branding · Packaging · Illustration · Book Design · Murals</p>
-      <a href="#work" class="hero-cta">See my work</a>
-    </div>
-    <!-- cloud bottom shape -->
-    <div class="cloud-row cloud-row--bottom">
-      <div class="cloud-bubble"></div>
-      <div class="cloud-bubble cloud-bubble--wide"></div>
-      <div class="cloud-bubble"></div>
-      <div class="cloud-bubble cloud-bubble--wide"></div>
-      <div class="cloud-bubble"></div>
-      <div class="cloud-bubble cloud-bubble--wide"></div>
-      <div class="cloud-bubble"></div>
+      <div class="hero-actions">
+        <a href="#work" class="btn-primary">See my work</a>
+        <a href="#contact" class="btn-ghost-white">Get in touch</a>
+      </div>
     </div>
   </section>
 
-  <!-- WORK -->
-  <section class="section work-section" id="work">
+  <!-- ═══ ABOUT ═══ -->
+  <!-- Cloud shape lives here so it travels WITH the white section as you scroll -->
+  <section class="about-section" id="about">
+
+    <!-- Organic cloud edge — sits at the very top, overlapping the blue hero below -->
+    <div class="hero-cloud-edge" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 110" preserveAspectRatio="none">
+        <ellipse cx="80"   cy="115" rx="145" ry="88"  fill="white"/>
+        <ellipse cx="240"  cy="115" rx="175" ry="72"  fill="white"/>
+        <ellipse cx="410"  cy="115" rx="152" ry="95"  fill="white"/>
+        <ellipse cx="580"  cy="115" rx="180" ry="80"  fill="white"/>
+        <ellipse cx="755"  cy="115" rx="160" ry="100" fill="white"/>
+        <ellipse cx="930"  cy="115" rx="175" ry="85"  fill="white"/>
+        <ellipse cx="1105" cy="115" rx="158" ry="90"  fill="white"/>
+        <ellipse cx="1280" cy="115" rx="168" ry="78"  fill="white"/>
+        <ellipse cx="1420" cy="115" rx="140" ry="88"  fill="white"/>
+        <rect x="0" y="80" width="1440" height="30" fill="white"/>
+      </svg>
+    </div>
+
     <div class="container">
-      <div class="section-head">
-        <h2 class="section-title">Selected<br>Work</h2>
-        <a href="#contact" class="ghost-btn">Work with me →</a>
+      <p class="section-label">Who I am</p>
+      <!-- large descriptive text — same style as template's "An LA social media agency..." -->
+      <p class="about-bigtext">
+        I'm Kotryna — a freelance graphic designer with <em>10 years of experience making things look good.</em> Logos, packaging, brand books, illustrations, murals, book layouts — you name it. If it needs a visual identity, I'm your person. I collaborate with advertising agencies and work directly with clients who care about design that's <em>smart, a little bold, colorful, and impossible to ignore.</em>
+      </p>
+    </div>
+
+    <!-- full-width portrait photo block -->
+    <div class="about-photo-block">
+      <div class="about-photo-img">
+        <img src="images/portrait.jpg" alt="Kotryna Baniulytė">
       </div>
-
-      <!-- 2-column grid, left column = from left, right column = from right -->
-      <div class="work-grid">
-
-        <a class="card card--blue"        href="#" data-project="beribu"           data-dir="left">
-          <div class="card-frame"><div class="card-img card-img--empty"><span>Coming soon</span><div class="card-overlay">View project</div></div></div>
-          <div class="card-info"><span class="card-cat">Brand Identity</span><span class="card-name">Beribu</span><span class="card-year">2023</span></div>
-        </a>
-
-        <a class="card card--green"       href="#" data-project="kelioniu"          data-dir="right">
-          <div class="card-frame"><div class="card-img card-img--empty"><span>Coming soon</span><div class="card-overlay">View project</div></div></div>
-          <div class="card-info"><span class="card-cat">Visual Identity</span><span class="card-name">Kelioniu akademija</span><span class="card-year">2025</span></div>
-        </a>
-
-        <a class="card card--orange"      href="#" data-project="bite"              data-dir="left">
-          <div class="card-frame"><div class="card-img card-img--empty"><span>Coming soon</span><div class="card-overlay">View project</div></div></div>
-          <div class="card-info"><span class="card-cat">Brand Identity</span><span class="card-name">Romainiu odontologijos klinika</span><span class="card-year">2024</span></div>
-        </a>
-
-        <a class="card card--yellow"      href="#" data-project="zoo"               data-dir="right">
-          <div class="card-frame"><div class="card-img card-img--empty"><span>Coming soon</span><div class="card-overlay">View project</div></div></div>
-          <div class="card-info"><span class="card-cat">Illustration</span><span class="card-name">Lithuanian Zoo</span><span class="card-year">2023</span></div>
-        </a>
-
-        <a class="card card--purple"      href="#" data-project="doa"               data-dir="left">
-          <div class="card-frame"><div class="card-img card-img--empty"><span>Coming soon</span><div class="card-overlay">View project</div></div></div>
-          <div class="card-info"><span class="card-cat">Book Cover</span><span class="card-name">Disputes over Access</span><span class="card-year">2023</span></div>
-        </a>
-
-        <a class="card card--blue"        href="#" data-project="visual-identity"   data-dir="right">
-          <div class="card-frame"><div class="card-img card-img--empty"><span>Coming soon</span><div class="card-overlay">View project</div></div></div>
-          <div class="card-info"><span class="card-cat">Visual Identity</span><span class="card-name">Kotryna Creates</span><span class="card-year">2025</span></div>
-        </a>
-
-        <a class="card card--orange"      href="#" data-project="jaunimo"           data-dir="left">
-          <div class="card-frame"><div class="card-img card-img--empty"><span>Coming soon</span><div class="card-overlay">View project</div></div></div>
-          <div class="card-info"><span class="card-cat">Book Design</span><span class="card-name">Jaunimo linija</span><span class="card-year">2022</span></div>
-        </a>
-
-        <a class="card card--green"       href="#" data-project="livoliukai"        data-dir="right">
-          <div class="card-frame"><div class="card-img card-img--empty"><span>Coming soon</span><div class="card-overlay">View project</div></div></div>
-          <div class="card-info"><span class="card-cat">Brand Identity</span><span class="card-name">Livoliukai</span><span class="card-year">2022</span></div>
-        </a>
-
-        <a class="card card--yellow"      href="#" data-project="typeface"          data-dir="left">
-          <div class="card-frame"><div class="card-img card-img--empty"><span>Coming soon</span><div class="card-overlay">View project</div></div></div>
-          <div class="card-info"><span class="card-cat">Typography</span><span class="card-name">Handmade Typeface</span><span class="card-year">2019</span></div>
-        </a>
-
-        <a class="card card--purple"      href="#" data-project="muziejus"          data-dir="right">
-          <div class="card-frame"><div class="card-img card-img--empty"><span>Coming soon</span><div class="card-overlay">View project</div></div></div>
-          <div class="card-info"><span class="card-cat">Visual Identity</span><span class="card-name">Lietuvos etnografijos muziejus</span><span class="card-year">2024</span></div>
-        </a>
-
-        <a class="card card--blue"        href="#" data-project="ekosanus"          data-dir="left">
-          <div class="card-frame"><div class="card-img card-img--empty"><span>Coming soon</span><div class="card-overlay">View project</div></div></div>
-          <div class="card-info"><span class="card-cat">Logo &amp; Packaging</span><span class="card-name">EKOsanus</span><span class="card-year">2021</span></div>
-        </a>
-
-        <a class="card card--orange"      href="#" data-project="orkla"             data-dir="right">
-          <div class="card-frame"><div class="card-img card-img--empty"><span>Coming soon</span><div class="card-overlay">View project</div></div></div>
-          <div class="card-info"><span class="card-cat">Design</span><span class="card-name">Orkla care</span><span class="card-year">2024</span></div>
-        </a>
-
-        <a class="card card--green"       href="#" data-project="vom"               data-dir="left">
-          <div class="card-frame"><div class="card-img card-img--empty"><span>Coming soon</span><div class="card-overlay">View project</div></div></div>
-          <div class="card-info"><span class="card-cat">Design</span><span class="card-name">VOM Baltics</span><span class="card-year">2022</span></div>
-        </a>
-
-        <a class="card card--yellow"      href="#" data-project="tshirts"           data-dir="right">
-          <div class="card-frame"><div class="card-img card-img--empty"><span>Coming soon</span><div class="card-overlay">View project</div></div></div>
-          <div class="card-info"><span class="card-cat">Illustration</span><span class="card-name">T-shirt designs</span><span class="card-year">2023</span></div>
-        </a>
-
-      </div>
+      <div class="about-tag about-tag--orange">10 years of experience</div>
+      <div class="about-tag about-tag--yellow">Based in Lithuania</div>
     </div>
   </section>
 
-  <!-- SERVICES -->
+  <!-- ═══ SERVICES — sticky stacking cards ═══ -->
   <section class="services-section" id="services">
     <div class="container">
       <div class="section-head">
         <h2 class="section-title">My<br>Services</h2>
-        <a href="#contact" class="ghost-btn">Get in touch →</a>
+        <a href="#contact" class="btn-ghost-dark">Get in touch →</a>
       </div>
     </div>
-
-    <!-- Cards are flat siblings — this is how sticky stacking works -->
     <div class="services-stack">
 
-      <!-- 1: Brand Identity — blue, z-index 1 (bottom of stack) -->
       <div class="svc-card svc-card--blue">
         <div class="svc-left">
-          <div class="svc-title-row">
+          <div class="svc-header">
             <h3 class="svc-title">Brand Identity</h3>
             <p class="svc-desc">Creating visual systems that make brands instantly recognisable — from the first sketch to the final brandbook.</p>
           </div>
@@ -161,36 +108,30 @@
             <li><span class="svc-num">04</span><span>Business card &amp; stationery</span></li>
           </ul>
         </div>
-        <div class="svc-right">
-          <img src="images/beribu-cover.png" alt="Brand Identity work">
-        </div>
+        <div class="svc-right svc-right--empty"></div>
       </div>
 
-      <!-- 2: Illustration — orange, z-index 2 (covers card 1) -->
       <div class="svc-card svc-card--orange">
         <div class="svc-left">
-          <div class="svc-title-row">
+          <div class="svc-header">
             <h3 class="svc-title">Illustration</h3>
-            <p class="svc-desc">Custom artwork with personality — whether it's for a children's book, a campaign or a one-of-a-kind wall mural.</p>
+            <p class="svc-desc">Custom artwork with personality — for children's books, campaigns, editorial or one-of-a-kind wall murals.</p>
           </div>
           <ul class="svc-list">
             <li><span class="svc-num">01</span><span>Book illustration</span></li>
             <li><span class="svc-num">02</span><span>Editorial &amp; character design</span></li>
-            <li><span class="svc-num">03</span><span>Murals &amp; large format art</span></li>
+            <li><span class="svc-num">03</span><span>Murals &amp; large format</span></li>
             <li><span class="svc-num">04</span><span>Custom commissions</span></li>
           </ul>
         </div>
-        <div class="svc-right">
-          <img src="images/zoo-cover.jpg" alt="Illustration work">
-        </div>
+        <div class="svc-right svc-right--empty"></div>
       </div>
 
-      <!-- 3: Book & Editorial Design — green, z-index 3 -->
       <div class="svc-card svc-card--green">
         <div class="svc-left">
-          <div class="svc-title-row">
+          <div class="svc-header">
             <h3 class="svc-title">Book &amp; Editorial Design</h3>
-            <p class="svc-desc">Layouts that are as beautiful to read as they are to look at — for books, exercise books, magazines and publications.</p>
+            <p class="svc-desc">Layouts that are as beautiful to read as they are to look at — for books, workbooks, magazines and publications.</p>
           </div>
           <ul class="svc-list">
             <li><span class="svc-num">01</span><span>Book layout design</span></li>
@@ -199,15 +140,12 @@
             <li><span class="svc-num">04</span><span>Magazines &amp; brochures</span></li>
           </ul>
         </div>
-        <div class="svc-right">
-          <img src="images/jaunimo-linija-cover.jpg" alt="Book design work">
-        </div>
+        <div class="svc-right svc-right--empty"></div>
       </div>
 
-      <!-- 4: Packaging — yellow, z-index 4 -->
       <div class="svc-card svc-card--yellow">
         <div class="svc-left">
-          <div class="svc-title-row">
+          <div class="svc-header">
             <h3 class="svc-title">Packaging Design</h3>
             <p class="svc-desc">Packaging that stands out on the shelf — designed to communicate the brand story at a glance.</p>
           </div>
@@ -218,17 +156,14 @@
             <li><span class="svc-num">04</span><span>Print-ready files</span></li>
           </ul>
         </div>
-        <div class="svc-right">
-          <img src="images/bite-cover.jpg" alt="Packaging work">
-        </div>
+        <div class="svc-right svc-right--empty"></div>
       </div>
 
-      <!-- 5: Advertising & Digital — purple, z-index 5 (top of stack) -->
       <div class="svc-card svc-card--purple">
         <div class="svc-left">
-          <div class="svc-title-row">
+          <div class="svc-header">
             <h3 class="svc-title">Advertising &amp; Digital</h3>
-            <p class="svc-desc">Visual assets for digital campaigns — built for performance and designed to stop the scroll.</p>
+            <p class="svc-desc">Visual assets built for digital campaigns — designed to stop the scroll and communicate instantly.</p>
           </div>
           <ul class="svc-list">
             <li><span class="svc-num">01</span><span>Meta ads (Facebook / Instagram)</span></li>
@@ -237,80 +172,229 @@
             <li><span class="svc-num">04</span><span>Social media graphics</span></li>
           </ul>
         </div>
-        <div class="svc-right">
-          <img src="images/visual-identity-cover.jpg" alt="Advertising work">
-        </div>
+        <div class="svc-right svc-right--empty"></div>
       </div>
 
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section class="section about-section" id="about">
-    <!-- cloud top -->
-    <div class="cloud-row cloud-row--top cloud-row--dark">
-      <div class="cloud-bubble"></div>
-      <div class="cloud-bubble cloud-bubble--wide"></div>
-      <div class="cloud-bubble"></div>
-      <div class="cloud-bubble cloud-bubble--wide"></div>
-      <div class="cloud-bubble"></div>
-      <div class="cloud-bubble cloud-bubble--wide"></div>
-      <div class="cloud-bubble"></div>
+  <!-- ═══ WORK ═══ -->
+  <section class="work-section" id="work">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Selected<br>Work</h2>
+      </div>
+      <div class="work-grid">
+
+        <a class="card card--blue"   href="#" data-project="beribu"          data-dir="left">
+          <div class="card-img card-img--empty"><span>Coming soon</span><div class="card-ov">View project</div></div>
+          <div class="card-info"><span class="card-cat">Brand Identity</span><h3 class="card-name">Beribu</h3><span class="card-year">2023</span></div>
+        </a>
+
+        <a class="card card--green"  href="#" data-project="kelioniu"        data-dir="right">
+          <div class="card-img card-img--empty"><span>Coming soon</span><div class="card-ov">View project</div></div>
+          <div class="card-info"><span class="card-cat">Visual Identity</span><h3 class="card-name">Kelioniu akademija</h3><span class="card-year">2025</span></div>
+        </a>
+
+        <a class="card card--orange" href="#" data-project="bite"            data-dir="left">
+          <div class="card-img card-img--empty"><span>Coming soon</span><div class="card-ov">View project</div></div>
+          <div class="card-info"><span class="card-cat">Brand Identity</span><h3 class="card-name">Romainiu odontologijos klinika</h3><span class="card-year">2024</span></div>
+        </a>
+
+        <a class="card card--yellow" href="#" data-project="zoo"             data-dir="right">
+          <div class="card-img card-img--empty"><span>Coming soon</span><div class="card-ov">View project</div></div>
+          <div class="card-info"><span class="card-cat">Illustration</span><h3 class="card-name">Lithuanian Zoo</h3><span class="card-year">2023</span></div>
+        </a>
+
+        <a class="card card--purple" href="#" data-project="doa"             data-dir="left">
+          <div class="card-img card-img--empty"><span>Coming soon</span><div class="card-ov">View project</div></div>
+          <div class="card-info"><span class="card-cat">Book Cover</span><h3 class="card-name">Disputes over Access</h3><span class="card-year">2023</span></div>
+        </a>
+
+        <a class="card card--blue"   href="#" data-project="visual-identity" data-dir="right">
+          <div class="card-img card-img--empty"><span>Coming soon</span><div class="card-ov">View project</div></div>
+          <div class="card-info"><span class="card-cat">Visual Identity</span><h3 class="card-name">Kotryna Creates</h3><span class="card-year">2025</span></div>
+        </a>
+
+        <a class="card card--orange" href="#" data-project="jaunimo"         data-dir="left">
+          <div class="card-img card-img--empty"><span>Coming soon</span><div class="card-ov">View project</div></div>
+          <div class="card-info"><span class="card-cat">Book Design</span><h3 class="card-name">Jaunimo linija</h3><span class="card-year">2022</span></div>
+        </a>
+
+        <a class="card card--green"  href="#" data-project="livoliukai"      data-dir="right">
+          <div class="card-img card-img--empty"><span>Coming soon</span><div class="card-ov">View project</div></div>
+          <div class="card-info"><span class="card-cat">Brand Identity</span><h3 class="card-name">Livoliukai</h3><span class="card-year">2022</span></div>
+        </a>
+
+        <a class="card card--yellow" href="#" data-project="typeface"        data-dir="left">
+          <div class="card-img card-img--empty"><span>Coming soon</span><div class="card-ov">View project</div></div>
+          <div class="card-info"><span class="card-cat">Typography</span><h3 class="card-name">Handmade Typeface</h3><span class="card-year">2019</span></div>
+        </a>
+
+        <a class="card card--purple" href="#" data-project="muziejus"        data-dir="right">
+          <div class="card-img card-img--empty"><span>Coming soon</span><div class="card-ov">View project</div></div>
+          <div class="card-info"><span class="card-cat">Visual Identity</span><h3 class="card-name">Lietuvos etnografijos muziejus</h3><span class="card-year">2024</span></div>
+        </a>
+
+        <a class="card card--blue"   href="#" data-project="ekosanus"        data-dir="left">
+          <div class="card-img card-img--empty"><span>Coming soon</span><div class="card-ov">View project</div></div>
+          <div class="card-info"><span class="card-cat">Logo &amp; Packaging</span><h3 class="card-name">EKOsanus</h3><span class="card-year">2021</span></div>
+        </a>
+
+        <a class="card card--orange" href="#" data-project="orkla"           data-dir="right">
+          <div class="card-img card-img--empty"><span>Coming soon</span><div class="card-ov">View project</div></div>
+          <div class="card-info"><span class="card-cat">Design</span><h3 class="card-name">Orkla care</h3><span class="card-year">2024</span></div>
+        </a>
+
+        <a class="card card--green"  href="#" data-project="vom"             data-dir="left">
+          <div class="card-img card-img--empty"><span>Coming soon</span><div class="card-ov">View project</div></div>
+          <div class="card-info"><span class="card-cat">Design</span><h3 class="card-name">VOM Baltics</h3><span class="card-year">2022</span></div>
+        </a>
+
+        <a class="card card--yellow" href="#" data-project="tshirts"         data-dir="right">
+          <div class="card-img card-img--empty"><span>Coming soon</span><div class="card-ov">View project</div></div>
+          <div class="card-info"><span class="card-cat">Illustration</span><h3 class="card-name">T-shirt designs</h3><span class="card-year">2023</span></div>
+        </a>
+
+      </div>
     </div>
-    <div class="about-bg">
-      <div class="container">
-        <div class="about-grid">
-          <div class="about-photo">
-            <img src="images/portrait.png" alt="Kotryna Baniulytė">
-            <div class="about-tag about-tag--orange">10 years of experience</div>
-            <div class="about-tag about-tag--yellow">Based in Lithuania</div>
-          </div>
-          <div class="about-text">
-            <p class="about-label">Who I am</p>
-            <h2 class="about-title">Design that speaks before you say a word.</h2>
-            <p class="about-body">I'm Kotryna — a freelance graphic designer with 10 years of experience. I work across a wide range of disciplines: logos, packaging, brandbooks, illustrations, meta ads, murals, book layout design and book illustration.</p>
-            <p class="about-body">I collaborate with advertising agencies as a freelance partner and take on direct commissions from clients who want design that is thoughtful, clear and built to last.</p>
-            <div class="about-chips">
-              <span class="chip chip-blue">Logos</span>
-              <span class="chip chip-orange">Packaging</span>
-              <span class="chip chip-green">Brandbooks</span>
-              <span class="chip chip-yellow">Illustration</span>
-              <span class="chip chip-purple">Murals</span>
-              <span class="chip chip-blue">Book Design</span>
-              <span class="chip chip-orange">Meta Ads</span>
-            </div>
-            <div class="about-links">
-              <a href="https://www.instagram.com/kotryna.creates/" target="_blank" rel="noopener" class="ghost-btn">Instagram ↗</a>
-              <a href="https://www.linkedin.com/in/kotryna-baniulyt%C4%97-553287295/" target="_blank" rel="noopener" class="ghost-btn">LinkedIn ↗</a>
-            </div>
-          </div>
+  </section>
+
+  <!-- ═══ SKILLS TICKER — same as template's "superpowers" ticker ═══ -->
+  <section class="skills-section">
+    <div class="container">
+      <h2 class="section-title">My superpowers</h2>
+    </div>
+    <div class="ticker-mask">
+      <ul class="ticker-track">
+        <li><span class="chip chip-orange">Brand Identity</span></li>
+        <li><span class="chip chip-blue">Illustration</span></li>
+        <li><span class="chip chip-green">Book Design</span></li>
+        <li><span class="chip chip-yellow">Color Theory</span></li>
+        <li><span class="chip chip-purple">Typography</span></li>
+        <li><span class="chip chip-orange">Murals</span></li>
+        <li><span class="chip chip-blue">Font Nerd</span></li>
+        <li><span class="chip chip-green">Packaging</span></li>
+        <li><span class="chip chip-yellow">Detail Obsessed</span></li>
+        <li><span class="chip chip-purple">Art Direction</span></li>
+        <li><span class="chip chip-orange">Visual Storytelling</span></li>
+        <li><span class="chip chip-blue">Brandbooks</span></li>
+        <li><span class="chip chip-green">Layout Magic</span></li>
+        <li><span class="chip chip-yellow">Meta Ads</span></li>
+        <li><span class="chip chip-purple">Making Things Pretty</span></li>
+        <li><span class="chip chip-orange">Editorial Design</span></li>
+        <li><span class="chip chip-blue">Pixel Perfect</span></li>
+        <li><span class="chip chip-green">Sketch to Screen</span></li>
+        <li><span class="chip chip-yellow">Creative Problem Solving</span></li>
+        <li><span class="chip chip-purple">10 Years of Good Taste</span></li>
+        <!-- duplicate set for seamless loop -->
+        <li><span class="chip chip-orange">Brand Identity</span></li>
+        <li><span class="chip chip-blue">Illustration</span></li>
+        <li><span class="chip chip-green">Book Design</span></li>
+        <li><span class="chip chip-yellow">Color Theory</span></li>
+        <li><span class="chip chip-purple">Typography</span></li>
+        <li><span class="chip chip-orange">Murals</span></li>
+        <li><span class="chip chip-blue">Font Nerd</span></li>
+        <li><span class="chip chip-green">Packaging</span></li>
+        <li><span class="chip chip-yellow">Detail Obsessed</span></li>
+        <li><span class="chip chip-purple">Art Direction</span></li>
+        <li><span class="chip chip-orange">Visual Storytelling</span></li>
+        <li><span class="chip chip-blue">Brandbooks</span></li>
+        <li><span class="chip chip-green">Layout Magic</span></li>
+        <li><span class="chip chip-yellow">Meta Ads</span></li>
+        <li><span class="chip chip-purple">Making Things Pretty</span></li>
+        <li><span class="chip chip-orange">Editorial Design</span></li>
+        <li><span class="chip chip-blue">Pixel Perfect</span></li>
+        <li><span class="chip chip-green">Sketch to Screen</span></li>
+        <li><span class="chip chip-yellow">Creative Problem Solving</span></li>
+        <li><span class="chip chip-purple">10 Years of Good Taste</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══ PROCESS — same as template's 3-card process section ═══ -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">My process</h2>
+      </div>
+      <div class="process-grid">
+        <div class="process-card process-card--green reveal">
+          <span class="process-num">01</span>
+          <p class="process-name">Discover</p>
+          <p class="process-desc">We talk about your project and I send you a questionnaire to fill in — so I know exactly who you are, what you need, and what you love before I ever open a file.</p>
+        </div>
+        <div class="process-card process-card--blue reveal">
+          <span class="process-num">02</span>
+          <p class="process-name">Design</p>
+          <p class="process-desc">I create thoughtful, crafted visuals with attention to every detail — and always present a few different directions so you can choose what feels right, not just take it or leave it.</p>
+        </div>
+        <div class="process-card process-card--orange reveal">
+          <span class="process-num">03</span>
+          <p class="process-name">Deliver</p>
+          <p class="process-desc">Clean final files in any format you need — print, screen, whatever works for you. I can even liaise with printing companies on your behalf so you don't have to figure that part out alone.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT CTA -->
-  <section class="contact-section" id="contact">
-    <div class="container contact-inner">
-      <p class="contact-eyebrow">Let's work together</p>
-      <h2 class="contact-title">Got a project<br><span>in mind?</span></h2>
-      <p class="contact-sub">I'm available for freelance work and agency collaborations. Send me a message.</p>
-      <a href="mailto:baniulyte.k@gmail.com" class="contact-cta">baniulyte.k@gmail.com</a>
+  <!-- ═══ BRANDS TICKER ═══ -->
+  <section class="brands-section">
+    <p class="brands-label">Brands I've worked with</p>
+    <div class="brands-mask">
+      <ul class="brands-track">
+        <li class="brand-logo brand-logo--wide"></li>
+        <li class="brand-logo"></li>
+        <li class="brand-logo brand-logo--wide"></li>
+        <li class="brand-logo brand-logo--narrow"></li>
+        <li class="brand-logo"></li>
+        <li class="brand-logo brand-logo--wide"></li>
+        <li class="brand-logo brand-logo--narrow"></li>
+        <li class="brand-logo"></li>
+        <li class="brand-logo brand-logo--wide"></li>
+        <li class="brand-logo brand-logo--narrow"></li>
+        <!-- duplicate for seamless loop -->
+        <li class="brand-logo brand-logo--wide"></li>
+        <li class="brand-logo"></li>
+        <li class="brand-logo brand-logo--wide"></li>
+        <li class="brand-logo brand-logo--narrow"></li>
+        <li class="brand-logo"></li>
+        <li class="brand-logo brand-logo--wide"></li>
+        <li class="brand-logo brand-logo--narrow"></li>
+        <li class="brand-logo"></li>
+        <li class="brand-logo brand-logo--wide"></li>
+        <li class="brand-logo brand-logo--narrow"></li>
+      </ul>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ═══ CONTACT CTA — same as template's "Ready to be famous?" ═══ -->
+  <section class="cta-section" id="contact">
+    <div class="cta-inner container">
+      <h2 class="cta-title">
+        Got a project<br>that needs to<br>
+        <span class="cta-keyword">stand out?</span>
+      </h2>
+      <p class="cta-sub">I'm available for freelance work and agency collaborations. Send me a message.</p>
+      <a href="mailto:baniulyte.k@gmail.com" class="btn-primary btn-primary--large">baniulyte.k@gmail.com</a>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER — same as template ═══ -->
   <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-top">
-        <div class="footer-nav">
-          <a class="footer-card footer-card--blue" href="#work">Work</a>
-          <a class="footer-card footer-card--orange" href="#about">About</a>
-          <a class="footer-card footer-card--green" href="#contact">Contact</a>
-        </div>
+    <div class="container">
+      <div class="footer-cards">
+        <a class="footer-card footer-card--blue"   href="#top">Home</a>
+        <a class="footer-card footer-card--orange" href="#about">About</a>
+        <a class="footer-card footer-card--green"  href="#work">Work</a>
+        <a class="footer-card footer-card--purple" href="#contact">Contact</a>
       </div>
       <div class="footer-bottom">
-        <span class="footer-name">Kotryna Creates</span>
+        <div class="footer-id">
+          <img src="images/logo.png" alt="Kotryna Creates logo" class="footer-logo">
+          <span class="footer-name">Kotryna Creates</span>
+          <a href="mailto:baniulyte.k@gmail.com" class="footer-email">baniulyte.k@gmail.com</a>
+        </div>
         <span class="footer-copy">© 2025 Kotryna Baniulytė</span>
         <div class="footer-socials">
           <a href="https://www.instagram.com/kotryna.creates/" target="_blank" rel="noopener">Instagram</a>
@@ -325,7 +409,7 @@
     <div class="modal-backdrop" id="modal-backdrop"></div>
     <div class="modal-box">
       <button class="modal-close" id="modal-close">✕</button>
-      <div class="modal-content" id="modal-content"></div>
+      <div id="modal-content"></div>
     </div>
   </div>
 
