@@ -85,20 +85,20 @@ document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
 // ═══ PROJECT DATA ═══
 const projects = {
-  beribu:           { name: 'Beribu',                          year: '2023', cat: 'Brand Identity',     images: [], desc: '' },
-  kelioniu:         { name: 'Kelioniu akademija',              year: '2025', cat: 'Visual Identity',    images: [], desc: '' },
-  bite:             { name: 'Romainiu odontologijos klinika',  year: '2024', cat: 'Brand Identity',     images: [], desc: '' },
-  zoo:              { name: 'Lithuanian Zoo',                  year: '2023', cat: 'Illustration',       images: [], desc: '' },
-  doa:              { name: 'Disputes over Access',            year: '2023', cat: 'Book Cover',         images: [], desc: 'Book cover for a journalist practice study.' },
-  'visual-identity':{ name: 'Kotryna Creates',                year: '2025', cat: 'Visual Identity',    images: [], desc: 'Personal logo and visual identity system.' },
-  jaunimo:          { name: 'Jaunimo linija',                  year: '2022', cat: 'Book Design',        images: [], desc: 'Exercise book design.' },
-  livoliukai:       { name: 'Livoliukai',                      year: '2022', cat: 'Brand Identity',     images: [], desc: '' },
-  typeface:         { name: 'Handmade Typeface',               year: '2019', cat: 'Typography',         images: [], desc: '' },
-  muziejus:         { name: 'Lietuvos etnografijos muziejus',  year: '2024', cat: 'Visual Identity',    images: [], desc: 'Images coming soon.' },
-  ekosanus:         { name: 'EKOsanus',                        year: '2021', cat: 'Logo & Packaging',   images: [], desc: "Logo and packaging for brewer's yeast. Images coming soon." },
-  orkla:            { name: 'Orkla care',                      year: '2024', cat: 'Design',             images: [], desc: 'Images coming soon.' },
-  vom:              { name: 'VOM Baltics',                     year: '2022', cat: 'Design',             images: [], desc: 'Images coming soon.' },
-  tshirts:          { name: 'T-shirt designs',                 year: '2023', cat: 'Illustration',       images: [], desc: 'Images coming soon.' },
+  beribu:           { name: 'Beribu',                          year: '2023', cat: 'Brand Identity',     images: ['images/beribu/cover.png','images/beribu/1.png','images/beribu/2.png','images/beribu/3.png','images/beribu/4.png','images/beribu/5.png','images/beribu/6.png','images/beribu/7.png','images/beribu/8.png'], desc: '' },
+  kelioniu:         { name: 'Kelioniu akademija',              year: '2025', cat: 'Visual Identity',    images: ['images/kelioniu/cover.png','images/kelioniu/1.png','images/kelioniu/2.png','images/kelioniu/3.png','images/kelioniu/4.png','images/kelioniu/5.png','images/kelioniu/6.png'], desc: '' },
+  bite:             { name: 'Romainiu odontologijos klinika',  year: '2024', cat: 'Brand Identity',     images: ['images/bite/cover.jpg','images/bite/1.png','images/bite/2.jpg','images/bite/3.jpg','images/bite/4.jpg','images/bite/5.jpg','images/bite/6.jpg','images/bite/7.jpg','images/bite/8.jpg','images/bite/9.png'], desc: '' },
+  zoo:              { name: 'Lithuanian Zoo',                  year: '2023', cat: 'Illustration',       images: ['images/zoo/cover.png','images/zoo/1.png','images/zoo/2.png','images/zoo/3.png','images/zoo/4.png','images/zoo/5.jpg','images/zoo/6.jpg'], desc: '' },
+  doa:              { name: 'Disputes over Access',            year: '2023', cat: 'Book Cover',         images: ['images/disputes/cover.png','images/disputes/1.png','images/disputes/2.png','images/disputes/3.png','images/disputes/4.png','images/disputes/5.png'], desc: 'Book cover for a journalist practice study.' },
+  'visual-identity':{ name: 'Kotryna Creates',                year: '2025', cat: 'Visual Identity',    images: ['images/visual-identity/cover.png','images/visual-identity/1.png','images/visual-identity/2.png','images/visual-identity/3.png','images/visual-identity/4.png','images/visual-identity/5.png','images/visual-identity/6.png','images/visual-identity/7.png','images/visual-identity/8.png','images/visual-identity/9.png'], desc: 'Personal logo and visual identity system.' },
+  jaunimo:          { name: 'Jaunimo linija',                  year: '2022', cat: 'Book Design',        images: ['images/jaunimo/cover.png','images/jaunimo/1.png','images/jaunimo/2.png','images/jaunimo/3.png','images/jaunimo/4.png','images/jaunimo/5.png','images/jaunimo/6.png','images/jaunimo/7.png'], desc: 'Exercise book design.' },
+  livoliukai:       { name: 'Livoliukai',                      year: '2022', cat: 'Brand Identity',     images: ['images/livoliukai/cover.jpg','images/livoliukai/1.png','images/livoliukai/2.png','images/livoliukai/3.png','images/livoliukai/4.png','images/livoliukai/5.png','images/livoliukai/6.png','images/livoliukai/7.png','images/livoliukai/8.png'], desc: '' },
+  typeface:         { name: 'Handmade Typeface',               year: '2019', cat: 'Typography',         images: ['images/typeface/cover.jpg','images/typeface/1.jpg','images/typeface/2.jpg','images/typeface/3.jpg','images/typeface/4.jpg','images/typeface/5.jpg'], desc: '' },
+  muziejus:         { name: 'Lietuvos etnografijos muziejus',  year: '2024', cat: 'Visual Identity',    images: ['images/muziejus/cover.jpeg','images/muziejus/1.jpeg','images/muziejus/2.jpeg','images/muziejus/3.jpeg','images/muziejus/4.jpeg','images/muziejus/5.png'], desc: '' },
+  ekosanus:         { name: 'EKOsanus',                        year: '2021', cat: 'Logo & Packaging',   images: ['images/ekosanus/cover.png','images/ekosanus/1.jpg','images/ekosanus/1.png','images/ekosanus/2.png','images/ekosanus/3.png','images/ekosanus/4.png','images/ekosanus/5.png','images/ekosanus/6.png','images/ekosanus/7.png'], desc: "Logo and packaging for brewer's yeast." },
+  orkla:            { name: 'Orkla care',                      year: '2024', cat: 'Design',             images: ['images/orkla/cover.png','images/orkla/1.png','images/orkla/2.png','images/orkla/3.png','images/orkla/5.jpg','images/orkla/6.png','images/orkla/7.png','images/orkla/8.png','images/orkla/9.jpg','images/orkla/10.png'], desc: '' },
+  vom:              { name: 'VOM Baltics',                     year: '2022', cat: 'Design',             images: ['images/vom/cover.jpg','images/vom/1.jpg','images/vom/3.jpg','images/vom/4.jpg','images/vom/5.jpg','images/vom/6.jpg','images/vom/7.jpg','images/vom/8.jpg','images/vom/9.jpg','images/vom/10.jpg','images/vom/11.jpg','images/vom/12.jpg'], desc: '' },
+  tshirts:          { name: 'T-shirt designs',                 year: '2023', cat: 'Illustration',       images: ['images/tshirts/cover.png','images/tshirts/1.png','images/tshirts/2.png','images/tshirts/3.png','images/tshirts/4.png','images/tshirts/5.png'], desc: '' },
 };
 
 // ═══ MODAL ═══
