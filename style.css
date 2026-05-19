@@ -540,42 +540,47 @@ body { font-family: var(--font-body); background: var(--white); color: var(--nav
 
 .brands-mask {
   overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, black 5%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 5%, black 95%, transparent 100%);
 }
 
 .brands-track {
   display: flex;
   align-items: center;
-  gap: 48px;
+  gap: 56px;
   width: max-content;
-  animation: ticker 30s linear infinite;
+  animation: brands-scroll 28s linear infinite;
   padding: 8px 0;
   list-style: none;
+  will-change: transform;
+}
+
+@keyframes brands-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* Placeholder logo blocks — grey rounded rectangles */
 .brand-logo {
-  height: 36px;
-  width: 100px;
-  background: var(--border);
-  border-radius: 6px;
+  height: 48px;
+  width: auto;
   flex-shrink: 0;
-  opacity: 0.5;
+  display: flex;
+  align-items: center;
 }
-.brand-logo--wide   { width: 140px; }
-.brand-logo--narrow { width: 72px; }
 
-/* When real logos are added, style them like this: */
 .brand-logo img {
-  width: 100%;
-  height: 100%;
+  height: 48px;
+  width: auto;
+  max-width: 160px;
   object-fit: contain;
-  filter: grayscale(100%) opacity(0.4);
-  transition: filter 0.3s;
+  opacity: 0.35;
+  transition: opacity 0.3s;
+  display: block;
 }
+
 .brand-logo img:hover {
-  filter: grayscale(0%) opacity(1);
+  opacity: 0.35;
 }
 
 /* Hover image — fades in over the cover on hover */
@@ -613,3 +618,4 @@ body { font-family: var(--font-body); background: var(--white); color: var(--nav
 .services-stack { background: var(--blue-bg); }
 
 .svc-card--white { background: var(--white); }
+
