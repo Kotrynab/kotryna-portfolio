@@ -199,8 +199,44 @@ body { font-family: var(--font-body); background: var(--white); color: var(--nav
 }
 
 /* ═══ WORK ═══ */
-.work-section { background: var(--blue-bg); padding: 100px 0; }
-.work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.work-section { background: var(--blue-bg); padding: 100px 0 120px; }
+.work-section .section-head { margin-bottom: 56px; }
+.work-stack { padding: 0 24px; }
+
+.work-card {
+  position: sticky; top: 90px;
+  background: var(--white); border-radius: 40px;
+  padding: 56px 52px; overflow: hidden;
+  display: grid; grid-template-columns: 1fr 1fr;
+  margin-bottom: 16px;
+  box-shadow: 0 12px 48px rgba(3,15,46,0.10);
+  will-change: transform; transform-origin: center top;
+}
+.work-card:nth-child(1) { z-index: 1; }
+.work-card:nth-child(2) { z-index: 2; }
+.work-card:nth-child(3) { z-index: 3; }
+.work-card:nth-child(4) { z-index: 4; }
+.work-card:nth-child(5) { z-index: 5; }
+.work-card:last-child { margin-bottom: 0; }
+
+.work-header { display: flex; flex-direction: column; gap: 16px; }
+.work-category { font-weight: 700; font-size: clamp(32px, 4vw, 56px); letter-spacing: -0.04em; color: var(--navy); line-height: 1; }
+.work-projects { display: flex; flex-direction: column; max-width: 50%; }
+.work-projects li { display: flex; align-items: center; gap: 12px; padding: 12px 24px; background: var(--blue); color: var(--white); border-radius: 100px; border: none; margin-bottom: 10px; font-size: 15px; font-weight: 700; letter-spacing: -0.03em; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(3,15,46,0.15); }
+.work-projects li:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(3,15,46,0.25); }
+.work-projects li:last-child { margin-bottom: 0; }
+.work-icon { display: none; }
+
+/* Color variants for work project buttons */
+.work-projects--green li   { background: var(--white);  color: var(--navy); border: 1px solid var(--border); }
+.work-projects--white li   { background: var(--white);  color: var(--navy); border: 1px solid var(--border); }
+.work-projects--orange li  { background: var(--white);  color: var(--navy); border: 1px solid var(--border); }
+.work-projects--yellow li  { background: var(--white);  color: var(--navy); border: 1px solid var(--border); }
+.work-projects--purple li  { background: var(--white);  color: var(--navy); border: 1px solid var(--border); }
+
+.work-image { overflow: hidden; border-radius: 32px; aspect-ratio: 16 / 9; }
+.work-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+.work-card:hover .work-image img { transform: scale(1.04); }
 
 /* same slide-in values as the template */
 .card[data-dir="left"]  { opacity: 0; transform: translate3d(-180px, 0, 0) scale(0.85); transition: transform 0.75s cubic-bezier(0.34,1.2,0.64,1), opacity 0.5s ease; }
