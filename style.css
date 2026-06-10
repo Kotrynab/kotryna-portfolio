@@ -163,7 +163,7 @@ body { font-family: var(--font-body); background: var(--white); color: var(--nav
 .about-bigtext em { font-style: normal; color: var(--blue); }
 
 .about-photo-block {
-  position: relative; margin-top: 80px;
+  position: relative; margin-top: 40px;
   height: auto; aspect-ratio: auto;
   overflow: hidden; border-radius: 40px 40px 0 0;
 }
