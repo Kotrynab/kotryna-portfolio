@@ -137,6 +137,23 @@ if (workStack) {
   onScroll();
 }
 
+// ═══ MOBILE NAV — hamburger toggle ═══
+const navPill   = document.querySelector('.nav-pill');
+const navToggle = document.getElementById('nav-toggle');
+if (navToggle && navPill) {
+  navToggle.addEventListener('click', () => {
+    const open = navPill.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  // close the menu after tapping a link
+  navPill.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      navPill.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
 // ═══ LOGO — scroll to very top ═══
 document.getElementById('nav-home').addEventListener('click', e => {
   e.preventDefault();
