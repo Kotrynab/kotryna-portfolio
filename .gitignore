@@ -1,2 +1,5 @@
 .DS_Store
 images-original-backup/
+
+# local dev preview helper
+.nocache_server.py

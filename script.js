@@ -106,33 +106,38 @@ const projects = {
 };
 
 // ═══ WORK CATEGORIES ═══
+// slug links to category.html?c=<slug>; the same data drives category.html.
 const workCategories = [
-  { name: 'Book Design',             projects: ['doa', 'livoliukai', 'jaunimo'],                                    img: 'images/covers/Book Design.jpg', color: 'green' },
-  { name: 'Brand Identity',          projects: ['beribu', 'visual-identity', 'ekosanus'],                          img: 'images/covers/Brand Identity.jpg', color: 'white' },
-  { name: 'Illustration',            projects: ['kelioniu', 'zoo', 'livoliukai', 'muziejus', 'typeface', 'tshirts'], img: 'images/covers/Illustration.jpg', color: 'orange' },
-  { name: 'Packaging Design',        projects: ['beribu', 'ekosanus'],                                             img: 'images/covers/Packaging Design.jpg', color: 'yellow' },
-  { name: 'Advertising & Digital', projects: ['bite', 'orkla', 'vom'],                                            img: 'images/covers/Advertising & digital.jpg', color: 'purple' },
+  { name: 'Advertising & Digital', slug: 'advertising-digital', projects: ['bite', 'orkla', 'vom'],                                            img: 'images/covers/Advertising & digital.jpg',  color: 'purple' },
+  { name: 'Illustration',          slug: 'illustration',       projects: ['kelioniu', 'zoo', 'livoliukai', 'muziejus', 'typeface', 'tshirts'], img: 'images/covers/Illustration.jpg',           color: 'orange' },
+  { name: 'Brand Identity',        slug: 'brand-identity',     projects: ['beribu', 'visual-identity', 'ekosanus'],                            img: 'images/covers/Brand Identity.jpg',         color: 'white' },
+  { name: 'Book Design',           slug: 'book-design',        projects: ['doa', 'livoliukai', 'jaunimo'],                                     img: 'images/covers/Book Design.jpg?v=2',            color: 'green' },
+  { name: 'Packaging Design',      slug: 'packaging-design',   projects: ['beribu', 'ekosanus'],                                               img: 'images/covers/Packaging Design.jpg',       color: 'yellow' },
 ];
 
-// ═══ RENDER WORK CATEGORIES ═══
+// ═══ RENDER WORK CATEGORIES — category cards (3 + 2) ═══
+// Each card shows the category cover with its name + project count.
+// Clicking opens category.html?c=<slug>.
 const workStack = document.getElementById('work-stack');
 if (workStack) {
-  workStack.innerHTML = workCategories.map((cat, idx) => {
-    const catProjects = cat.projects.map(k => ({ key: k, ...projects[k] }));
+  const grid = document.createElement('div');
+  grid.className = 'folder-grid';
+  grid.innerHTML = workCategories.map((cat) => {
+    const n = cat.projects.length;
     return `
-    <div class="work-card">
-      <div class="work-header">
-        <div class="work-category">${cat.name}</div>
-        <ul class="work-projects work-projects--${cat.color}">
-          ${catProjects.map((p, i) => `<li onclick="window.location='project.html?p=${p.key}'"><span class="work-icon">${i+1}</span> ${p.name}</li>`).join('')}
-        </ul>
-      </div>
-      <div class="work-image">
+    <a class="folder-card folder-card--${cat.color}" href="category.html?c=${cat.slug}" aria-label="${cat.name} — ${n} projects">
+      <div class="folder-thumb">
         <img src="${cat.img}" alt="${cat.name}" loading="lazy">
       </div>
-    </div>`;
+      <div class="folder-label">
+        <span class="folder-name">${cat.name}</span>
+        <span class="folder-meta">${n} project${n === 1 ? '' : 's'} →</span>
+      </div>
+    </a>`;
   }).join('');
-  // work cards exist now — cache them and apply initial transforms
+  workStack.innerHTML = '';
+  workStack.appendChild(grid);
+  // folder cards don't use the stacking animation — refresh caches anyway
   refreshCache();
   onScroll();
 }

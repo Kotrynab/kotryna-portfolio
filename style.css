@@ -235,53 +235,52 @@ body { font-family: var(--font-body); background: var(--white); color: var(--nav
 }
 
 /* ═══ WORK ═══ */
-.work-section { background: var(--blue-bg); padding: 100px 0 120px; }
+.work-section { background: var(--blue-bg); padding: 100px 0 0; }
 .work-section .section-head { margin-bottom: 56px; }
 .work-stack { padding: 0 24px; }
 
-.work-card {
-  position: sticky; top: 90px;
-  background: var(--white); border-radius: 40px;
-  padding: 56px 52px; overflow: hidden;
-  display: grid; grid-template-columns: 1fr 1fr; column-gap: 56px;
+/* ═══ CATEGORY CARDS — simple cards, 3 on top row + 2 centered below ═══ */
+.folder-grid {
+  max-width: 1120px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  gap: 32px 28px; align-items: start;
+}
+/* every card spans two of six columns → 3 per row */
+.folder-card {
+  grid-column: span 2;
+  --accent: #3aa17e; --accent-ink: #fff;
+  display: flex; flex-direction: column;
+  text-decoration: none; cursor: pointer;
+}
+/* second row: two cards, centered (offset by one column each side) */
+.folder-card:nth-child(4) { grid-column: 2 / span 2; }
+.folder-card:nth-child(5) { grid-column: 4 / span 2; }
+
+.folder-thumb {
+  position: relative; width: 100%; aspect-ratio: 16 / 9;
+  border-radius: 24px; overflow: hidden; background: var(--white);
+  box-shadow: 0 12px 36px rgba(3,15,46,0.14);
   margin-bottom: 16px;
-  box-shadow: 0 12px 48px rgba(3,15,46,0.10);
-  will-change: transform; transform-origin: center top;
 }
-.work-card:nth-child(1) { z-index: 1; }
-.work-card:nth-child(2) { z-index: 2; }
-.work-card:nth-child(3) { z-index: 3; }
-.work-card:nth-child(4) { z-index: 4; }
-.work-card:nth-child(5) { z-index: 5; }
-.work-card:last-child { margin-bottom: 0; }
+.folder-thumb img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.5s cubic-bezier(0.34,1.1,0.64,1);
+}
+.folder-card:hover .folder-thumb { box-shadow: 0 20px 48px rgba(3,15,46,0.24); }
+.folder-card:hover .folder-thumb img { transform: scale(1.05); }
 
-.work-header { display: flex; flex-direction: column; gap: 16px; }
-.work-category { font-weight: 700; font-size: clamp(32px, 4vw, 56px); letter-spacing: -0.04em; color: var(--navy); line-height: 1; }
-.work-projects { display: flex; flex-direction: column; }
-.work-projects li {
-  display: flex; align-items: center; justify-content: space-between; gap: 16px;
-  padding: 16px 4px;
-  border-bottom: 1px solid rgba(3,15,46,0.12);
-  color: var(--navy);
-  font-size: clamp(17px, 1.7vw, 23px); font-weight: 700; letter-spacing: -0.03em;
-  line-height: 1.1; cursor: pointer;
-  transition: color 0.2s, padding 0.25s cubic-bezier(0.34,1.4,0.64,1);
+/* label under the card */
+.folder-label { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 0 4px; }
+.folder-name {
+  font-weight: 700; font-size: clamp(18px, 1.5vw, 23px); letter-spacing: -0.03em;
+  color: var(--navy); line-height: 1.15; transition: color 0.2s;
 }
-.work-projects li:first-child { border-top: 1px solid rgba(3,15,46,0.12); }
-/* always-visible arrow — signals each row opens a project page */
-.work-projects li::after {
-  content: "→";
-  flex-shrink: 0; font-size: 19px; font-weight: 700;
-  color: rgba(3,15,46,0.3);
-  transition: transform 0.25s cubic-bezier(0.34,1.4,0.64,1), color 0.2s;
+.folder-meta {
+  flex-shrink: 0; font-size: 14px; font-weight: 600; color: rgba(3,15,46,0.5);
+  transition: color 0.2s, transform 0.25s cubic-bezier(0.34,1.4,0.64,1);
 }
-.work-projects li:hover { color: var(--blue); padding-left: 12px; }
-.work-projects li:hover::after { color: var(--blue); transform: translateX(5px); }
-.work-icon { display: none; }
-
-.work-image { overflow: hidden; border-radius: 32px; aspect-ratio: 16 / 9; }
-.work-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
-.work-card:hover .work-image img { transform: scale(1.04); }
+.folder-card:hover .folder-name { color: var(--yellow); }
+.folder-card:hover .folder-meta { color: var(--yellow); transform: translateX(3px); }
 
 /* same slide-in values as the template */
 .card[data-dir="left"]  { opacity: 0; transform: translate3d(-180px, 0, 0) scale(0.85); transition: transform 0.75s cubic-bezier(0.34,1.2,0.64,1), opacity 0.5s ease; }
@@ -436,22 +435,13 @@ body { font-family: var(--font-body); background: var(--white); color: var(--nav
   .services-stack { padding-bottom: 36px; }
   .work-section { padding-top: 48px; }
 
-  /* Work cards: uniform height so the sticky stack hides each card cleanly.
-     Image sits on top and fills the spare space (stays big, no empty gap);
-     text sits below. */
-  .work-card {
-    display: flex; flex-direction: column;
-    height: 500px; padding: 0; column-gap: 0; overflow: hidden;
-  }
-  .work-image {
-    order: -1; flex: 1 1 auto; min-height: 150px;
-    aspect-ratio: auto; border-radius: 0;
-  }
-  .work-image img { height: 100%; object-fit: cover; }
-  .work-header { padding: 22px 26px 26px; gap: 10px; }
-  .work-category { font-size: 24px; }
-  .work-projects li { padding: 11px 2px; font-size: 16px; }
-  .work-projects li::after { font-size: 16px; }
+  /* Category cards: two per row on tablet/phone, reset the 6-col placement */
+  .folder-grid { grid-template-columns: repeat(2, 1fr); gap: 24px 18px; }
+  .folder-card,
+  .folder-card:nth-child(4),
+  .folder-card:nth-child(5) { grid-column: auto; }
+  /* a lone 5th card centers under the two above */
+  .folder-card:nth-child(5) { grid-column: 1 / -1; max-width: 50%; justify-self: center; }
 
   .process-grid { grid-template-columns: 1fr; }
   .process-section { padding-bottom: 40px; }

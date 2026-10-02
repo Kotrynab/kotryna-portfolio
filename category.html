@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kotryna Creates · Category</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=new-title@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background: var(--blue-bg); }
+
+    /* ── NAV (project variant, shared look) ── */
+    .nav-project-pill {
+      pointer-events: all;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 20px 32px rgba(3,15,46,0.1);
+      padding: 12px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 32px; width: 100%; max-width: 900px;
+    }
+    .nav-project-pill .nav-logo { font-size: 15px; }
+    .nav-project-pill .nav-back {
+      font-size: 14px; font-weight: 700; color: var(--grey);
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border-radius: 100px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-project-pill .nav-back:hover { background: var(--bg); color: var(--navy); }
+
+    /* ── PAGE ── */
+    .cat-page { padding-top: 140px; padding-bottom: 40px; }
+    .cat-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── HEADER ── */
+    .cat-header {
+      max-width: 760px; margin: 0 auto 60px;
+      text-align: center; display: flex; flex-direction: column; align-items: center;
+    }
+    .cat-badge {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--navy);
+      background: var(--yellow); padding: 7px 16px; border-radius: 100px;
+      box-shadow: 0 4px 16px rgba(3,15,46,0.08); margin-bottom: 18px;
+    }
+    .cat-title {
+      font-family: var(--font-title);
+      font-size: clamp(40px, 7vw, 88px);
+      line-height: 1.02; letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--navy); margin-bottom: 20px;
+    }
+    .cat-desc {
+      font-size: 18px; line-height: 1.7; color: var(--navy);
+      font-weight: 500; max-width: 620px;
+    }
+
+    /* ── PROJECT GRID ── */
+    .cat-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 36px 32px;
+    }
+    .cat-item { text-decoration: none; display: flex; flex-direction: column; }
+    .cat-thumb {
+      border-radius: 20px; overflow: hidden; background: var(--white);
+      box-shadow: 0 10px 36px rgba(3,15,46,0.12);
+      aspect-ratio: 4 / 3; position: relative;
+      transition: transform 0.35s cubic-bezier(0.34,1.4,0.64,1), box-shadow 0.35s;
+    }
+    .cat-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .cat-item:hover .cat-thumb {
+      transform: translateY(-5px) scale(1.01);
+      box-shadow: 0 20px 50px rgba(3,15,46,0.22);
+    }
+    .cat-info {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 12px; padding: 16px 6px 0;
+    }
+    .cat-name {
+      font-weight: 700; font-size: clamp(17px, 1.6vw, 21px);
+      letter-spacing: -0.03em; color: var(--navy); line-height: 1.15;
+      transition: color 0.2s;
+    }
+    .cat-item:hover .cat-name { color: var(--white); }
+    .cat-year {
+      flex-shrink: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.04em;
+      color: rgba(23,51,96,0.5);
+    }
+
+    .cat-footer-link {
+      display: block; text-align: center; margin-top: 56px;
+      font-size: 15px; font-weight: 700; color: var(--navy);
+    }
+    .cat-footer-link:hover { color: var(--white); }
+
+    @media (max-width: 900px) { .cat-grid { grid-template-columns: repeat(2, 1fr); gap: 28px 22px; } }
+    @media (max-width: 560px) {
+      .cat-page { padding-top: 120px; }
+      .cat-grid { grid-template-columns: 1fr; gap: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav-wrap">
+    <div class="nav-project-pill">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon"><img src="images/logo.png" alt="K"></div>
+        Kotryna Creates
+      </a>
+      <a href="index.html#work" class="nav-back">← Back to portfolio</a>
+    </div>
+  </header>
+
+  <main class="cat-page">
+    <div class="cat-wrap">
+      <div class="cat-header">
+        <span class="cat-badge" id="cat-badge"></span>
+        <h1 class="cat-title" id="cat-title"></h1>
+        <p class="cat-desc" id="cat-desc"></p>
+      </div>
+      <div class="cat-grid" id="cat-grid"></div>
+      <a href="index.html#work" class="cat-footer-link">← All categories</a>
+    </div>
+  </main>
+
+  <footer style="padding:48px 24px;text-align:center;font-size:13px;color:rgba(3,15,46,0.5)">
+    © Kotryna Baniulytė · <a href="https://www.instagram.com/kotryna.creates" target="_blank" style="color:var(--navy);font-weight:600">Instagram</a>
+  </footer>
+
+  <script>
+    // project key → name, year, cover (cover = first gallery image)
+    const projects = {
+      beribu:            { name: 'Beribu',                         year: '2023', cover: 'images/beribu/cover.jpg?v=2' },
+      kelioniu:          { name: 'Kelionių akademija',             year: '2025', cover: 'images/kelioniu/cover.jpg' },
+      bite:              { name: 'Romainių odontologijos klinika', year: '2024', cover: 'images/bite/cover.jpg' },
+      zoo:               { name: 'Lithuanian Zoo',                 year: '2023', cover: 'images/zoo/cover.jpg' },
+      doa:               { name: 'Disputes over Access',           year: '2023', cover: 'images/disputes/cover.jpg' },
+      'visual-identity': { name: 'Gabija Balčiūnaitė',             year: '2025', cover: 'images/visual-identity/cover.jpg' },
+      jaunimo:           { name: 'Jaunimo linija',                 year: '2022', cover: 'images/jaunimo/cover.jpg' },
+      livoliukai:        { name: 'Livoliukai',                     year: '2022', cover: 'images/livoliukai/cover.jpg?v=3' },
+      typeface:          { name: 'Handmade Typeface',              year: '2019', cover: 'images/typeface/cover.jpg' },
+      muziejus:          { name: 'Lietuvos etnografijos muziejus', year: '2024', cover: 'images/muziejus/cover.jpeg' },
+      ekosanus:          { name: 'EKOsanus',                       year: '2021', cover: 'images/ekosanus/cover.jpg' },
+      orkla:             { name: 'Orkla Care',                     year: '2024', cover: 'images/orkla/cover.jpg' },
+      vom:               { name: 'VOM Baltics',                    year: '2022', cover: 'images/vom/cover.jpg' },
+      tshirts:           { name: 'T-shirt designs',                year: '2023', cover: 'images/tshirts/cover.jpg' },
+    };
+
+    const categories = {
+      'book-design': {
+        name: 'Book Design',
+        desc: 'Covers, layouts and editorial systems — books and publications designed to be felt before they are read.',
+        projects: ['doa', 'livoliukai', 'jaunimo'],
+      },
+      'brand-identity': {
+        name: 'Brand Identity',
+        desc: 'Logos, visual languages and identity systems built to be recognised and remembered.',
+        projects: ['beribu', 'visual-identity', 'ekosanus'],
+      },
+      'illustration': {
+        name: 'Illustration',
+        desc: 'Hand-drawn worlds, characters and lettering made to tell a story and bring a brand to life.',
+        projects: ['kelioniu', 'zoo', 'livoliukai', 'muziejus', 'typeface', 'tshirts'],
+      },
+      'packaging-design': {
+        name: 'Packaging Design',
+        desc: 'Labels, boxes and product packaging that make a brand tangible and tempting on the shelf.',
+        projects: ['beribu', 'ekosanus'],
+      },
+      'advertising-digital': {
+        name: 'Advertising & Digital',
+        desc: 'Campaigns, social templates and digital key art made to catch the eye and keep it moving.',
+        projects: ['bite', 'orkla', 'vom'],
+      },
+    };
+
+    const slug = new URLSearchParams(window.location.search).get('c');
+    const cat  = categories[slug];
+
+    if (!cat) {
+      document.getElementById('cat-title').textContent = 'Category not found.';
+    } else {
+      const n = cat.projects.length;
+      document.title = 'Kotryna Creates · ' + cat.name;
+      document.getElementById('cat-badge').textContent = n + ' project' + (n === 1 ? '' : 's');
+      document.getElementById('cat-title').textContent = cat.name;
+      document.getElementById('cat-desc').textContent  = cat.desc;
+
+      document.getElementById('cat-grid').innerHTML = cat.projects.map(key => {
+        const p = projects[key];
+        if (!p) return '';
+        return `
+        <a class="cat-item" href="project.html?p=${key}">
+          <div class="cat-thumb"><img src="${p.cover}" alt="${p.name}" loading="lazy"></div>
+          <div class="cat-info">
+            <span class="cat-name">${p.name}</span>
+            <span class="cat-year">${p.year}</span>
+          </div>
+        </a>`;
+      }).join('');
+    }
+  </script>
+
+</body>
+</html>
